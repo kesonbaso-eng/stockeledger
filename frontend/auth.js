@@ -56,12 +56,8 @@ async function sendTokenToBackend(user) {
 }
 
 async function handlePostLogin(user) {
-    const data = await sendTokenToBackend(user);
-    if (data.role === 'admin') {
-        window.location.href = '../admin/dashboard.html';
-    } else {
-        window.location.href = '../caissier/pos.html';
-    }
+    await sendTokenToBackend(user); // enregistre l'utilisateur côté backend
+    window.location.href = 'welcome.html'; // toujours passer par la page de bienvenue
 }
 
 // ── RÉSULTAT REDIRECTION GOOGLE ──

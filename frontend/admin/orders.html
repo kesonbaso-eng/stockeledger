@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commandes — StockLedger</title>
+    <link rel="icon" type="image/png" href="../stockeledeger.png">
     <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="app-layout">
 
     <aside class="sidebar">
-        <div class="logo">StockLedger</div>
+        <div class="logo">
+            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+        </div>
         <nav>
-            <a href="dashboard.html">📊 Dashboard</a>
-            <a href="products.html">📦 Produits</a>
-            <a href="expenses.html">💸 Dépenses</a>
-            <a href="orders.html" class="active">📋 Commandes</a>
-            <a href="../caissier/pos.html">🛒 Caisse</a>
+            <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+            <a href="products.html"><i class="fa-solid fa-boxes-stacked"></i> Produits</a>
+            <a href="expenses.html"><i class="fa-solid fa-money-bill-wave"></i> Dépenses</a>
+            <a href="orders.html" class="active"><i class="fa-solid fa-receipt"></i> Commandes</a>
+            <a href="../caissier/pos.html"><i class="fa-solid fa-cash-register"></i> Caisse</a>
         </nav>
         <div class="logout"><button id="logout-btn">Déconnexion</button></div>
     </aside>
@@ -26,8 +30,8 @@
             <h2>Commandes</h2>
             <div style="display:flex;align-items:center;gap:1rem">
                 <span class="user-info" id="user-info"></span>
-                <button class="btn-add" onclick="exportCSV()" style="font-size:0.85rem;padding:0.5rem 1rem">
-                    ⬇️ Export CSV
+                <button class="btn-add" onclick="exportCSV()">
+                    <i class="fa-solid fa-download"></i> Export CSV
                 </button>
             </div>
         </div>

@@ -5,258 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockLedger — Gérez votre boutique simplement</title>
     <link rel="icon" type="image/png" href="stockeledeger.png">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --primary: #0f3460;
-            --accent:  #e94560;
-            --light:   #f5f7fa;
-            --text:    #1a1a2e;
-        }
-
-        body { font-family: 'Segoe UI', sans-serif; color: var(--text); }
-
-        a { text-decoration: none; }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(15,52,96,0.97);
-            backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0.9rem 2.5rem;
-        }
-
-        .nav-brand {
-            display: flex; align-items: center; gap: 0.7rem;
-            color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
-        }
-
-        .nav-brand img { height: 36px; width: 36px; border-radius: 8px; background: #fff; padding: 3px; object-fit: contain; }
-
-        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-
-        .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
-
-        .btn-nav {
-            padding: 0.5rem 1.3rem;
-            background: var(--accent);
-            color: #fff !important;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s !important;
-        }
-
-        .btn-nav:hover { background: #c73652 !important; }
-
-        /* ── HERO ── */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 60%, #16213e 100%);
-            display: flex; align-items: center; justify-content: center;
-            text-align: center;
-            padding: 6rem 1.5rem 4rem;
-            position: relative; overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.15) 0%, transparent 60%);
-        }
-
-        .hero-content { position: relative; max-width: 700px; }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(233,69,96,0.2);
-            color: #e94560;
-            border: 1px solid rgba(233,69,96,0.4);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            color: #fff;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
-        }
-
-        .hero h1 span { color: #e94560; }
-
-        .hero p {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
-
-        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-        .btn-primary {
-            padding: 0.85rem 2rem;
-            background: var(--accent);
-            color: #fff;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .btn-primary:hover { background: #c73652; transform: translateY(-2px); }
-
-        .btn-outline {
-            padding: 0.85rem 2rem;
-            border: 2px solid rgba(255,255,255,0.4);
-            color: #fff;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-
-        .hero-img {
-            margin-top: 3.5rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .hero-stat {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .hero-stat .num { font-size: 1.8rem; font-weight: 800; color: #e94560; }
-        .hero-stat .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
-
-        /* ── FEATURES ── */
-        .features {
-            padding: 5rem 1.5rem;
-            background: var(--light);
-        }
-
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 1.9rem; color: var(--primary); font-weight: 800; }
-        .section-header p  { color: #666; margin-top: 0.5rem; font-size: 0.95rem; }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-
-        .feature-icon {
-            width: 52px; height: 52px;
-            background: linear-gradient(135deg, #0f3460, #16213e);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .feature-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
-        .feature-card p  { font-size: 0.88rem; color: #666; line-height: 1.6; }
-
-        /* ── ROLES ── */
-        .roles {
-            padding: 5rem 1.5rem;
-            background: #fff;
-        }
-
-        .roles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .role-card {
-            border-radius: 12px;
-            padding: 2rem;
-            border: 2px solid #eee;
-        }
-
-        .role-card.admin  { border-color: #0f3460; background: #f0f4ff; }
-        .role-card.cashier { border-color: #27ae60; background: #f0fff6; }
-
-        .role-card .role-title {
-            font-size: 1.1rem; font-weight: 800;
-            margin-bottom: 1rem;
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-
-        .role-card.admin  .role-title { color: #0f3460; }
-        .role-card.cashier .role-title { color: #27ae60; }
-
-        .role-card ul { list-style: none; }
-        .role-card ul li {
-            font-size: 0.88rem; color: #444;
-            padding: 0.35rem 0;
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-
-        .role-card ul li::before { content: '✅'; font-size: 0.75rem; }
-        .role-card ul li.blocked::before { content: '❌'; }
-
-        /* ── CTA ── */
-        .cta {
-            padding: 5rem 1.5rem;
-            background: linear-gradient(135deg, #0f3460, #1a1a2e);
-            text-align: center;
-            color: #fff;
-        }
-
-        .cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-        .cta p  { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 0.95rem; }
-
-        /* ── FOOTER ── */
-        footer {
-            background: #0d0d1a;
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.82rem;
-        }
-
-        footer a { color: #e94560; }
-    </style>
 </head>
 <body>
 
-    <!-- NAV -->
     <nav>
         <div class="nav-brand">
-            <img src="stockeledeger.png" alt="Logo">
+            <img src="stockeledeger.png" alt="Logo StockLedger">
             StockLedger
         </div>
         <div class="nav-links">
@@ -267,38 +23,38 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">🚀 Logiciel SaaS de gestion de boutique</div>
+            <div class="hero-badge">
+                <i class="fa-solid fa-rocket"></i>
+                Logiciel SaaS de gestion de boutique
+            </div>
             <h1>Gérez votre boutique<br><span>intelligemment</span></h1>
             <p>
                 Caisse, stock, comptabilité et facturation en un seul outil.<br>
-                Conçu pour les commerçants africains qui veulent aller vite.
+                Conçu pour les commerçants qui veulent aller vite.
             </p>
             <div class="hero-btns">
                 <a href="register.html" class="btn-primary">Créer mon compte gratuit</a>
                 <a href="login.html" class="btn-outline">Se connecter</a>
             </div>
-
-            <div class="hero-img">
+            <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="num">⚡</div>
+                    <div class="stat-icon"><i class="fa-solid fa-bolt fa-2x" style="color:#e94560"></i></div>
                     <div class="lbl">Ventes en temps réel</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="num">📦</div>
+                    <div class="stat-icon"><i class="fa-solid fa-boxes-stacked fa-2x" style="color:#e94560"></i></div>
                     <div class="lbl">Stock automatique</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="num">📊</div>
-                    <div class="lbl">P&L instantané</div>
+                    <div class="stat-icon"><i class="fa-solid fa-chart-line fa-2x" style="color:#e94560"></i></div>
+                    <div class="lbl">P&amp;L instantané</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FEATURES -->
     <section class="features" id="features">
         <div class="section-header">
             <h2>Tout ce dont vous avez besoin</h2>
@@ -306,39 +62,38 @@
         </div>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🛒</div>
+                <div class="feature-icon"><i class="fa-solid fa-cash-register fa-lg" style="color:#fff"></i></div>
                 <h3>Caisse (POS)</h3>
                 <p>Interface de vente rapide, scanner code-barres intégré, génération de reçu instantanée.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📦</div>
+                <div class="feature-icon"><i class="fa-solid fa-boxes-stacked fa-lg" style="color:#fff"></i></div>
                 <h3>Gestion du stock</h3>
                 <p>Déduction automatique à chaque vente. Alertes visuelles quand le stock est bas.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Dashboard P&L</h3>
+                <div class="feature-icon"><i class="fa-solid fa-chart-pie fa-lg" style="color:#fff"></i></div>
+                <h3>Dashboard P&amp;L</h3>
                 <p>Chiffre d'affaires, dépenses et bénéfice net calculés en temps réel chaque mois.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">💸</div>
+                <div class="feature-icon"><i class="fa-solid fa-money-bill-wave fa-lg" style="color:#fff"></i></div>
                 <h3>Dépenses</h3>
                 <p>Enregistrez loyers, salaires et charges. Le bénéfice net se met à jour automatiquement.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📶</div>
+                <div class="feature-icon"><i class="fa-solid fa-wifi fa-lg" style="color:#fff"></i></div>
                 <h3>Mode hors-ligne</h3>
                 <p>Les ventes sont sauvegardées localement et synchronisées dès le retour en ligne.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">⬇️</div>
+                <div class="feature-icon"><i class="fa-solid fa-file-csv fa-lg" style="color:#fff"></i></div>
                 <h3>Export CSV</h3>
                 <p>Exportez tout l'historique de vos ventes en un clic pour votre comptable.</p>
             </div>
         </div>
     </section>
 
-    <!-- ROLES -->
     <section class="roles" id="roles">
         <div class="section-header">
             <h2>Deux rôles, deux accès</h2>
@@ -346,42 +101,44 @@
         </div>
         <div class="roles-grid">
             <div class="role-card admin">
-                <div class="role-title">👑 Administrateur</div>
+                <div class="role-title">
+                    <i class="fa-solid fa-crown" style="color:#0f3460"></i>
+                    Administrateur
+                </div>
                 <ul>
-                    <li>Interface de caisse (POS)</li>
-                    <li>Ajouter / modifier / supprimer des produits</li>
-                    <li>Voir le tableau de bord financier (P&L)</li>
-                    <li>Saisir et consulter les dépenses</li>
-                    <li>Ajuster manuellement le stock</li>
-                    <li>Exporter les ventes en CSV</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Interface de caisse (POS)</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Ajouter / modifier / supprimer des produits</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Voir le tableau de bord financier (P&amp;L)</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Saisir et consulter les dépenses</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Ajuster manuellement le stock</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Exporter les ventes en CSV</li>
                 </ul>
             </div>
             <div class="role-card cashier">
-                <div class="role-title">🧾 Caissier</div>
+                <div class="role-title">
+                    <i class="fa-solid fa-receipt" style="color:#27ae60"></i>
+                    Caissier
+                </div>
                 <ul>
-                    <li>Interface de caisse (POS)</li>
-                    <li>Voir les quantités en stock</li>
-                    <li>Consulter son historique de ventes</li>
-                    <li class="blocked">Modifier les prix ou le catalogue</li>
-                    <li class="blocked">Voir le chiffre d'affaires</li>
-                    <li class="blocked">Accéder aux dépenses</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Interface de caisse (POS)</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Voir les quantités en stock</li>
+                    <li><i class="fa-solid fa-check" style="color:#27ae60"></i> Consulter son historique de ventes</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#e74c3c"></i> Modifier les prix ou le catalogue</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#e74c3c"></i> Voir le chiffre d'affaires</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#e74c3c"></i> Accéder aux dépenses</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta">
         <h2>Prêt à démarrer ?</h2>
         <p>Créez votre compte en 30 secondes. Aucune carte bancaire requise.</p>
-        <a href="register.html" class="btn-primary" style="display:inline-block">
-            Commencer gratuitement →
-        </a>
+        <a href="register.html" class="btn-cta">Commencer gratuitement</a>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <p>© 2026 StockLedger — <a href="policy.html">Politique de confidentialité</a></p>
+        <p>&copy; 2026 StockLedger &mdash; <a href="policy.html">Politique de confidentialité</a></p>
     </footer>
 
 </body>

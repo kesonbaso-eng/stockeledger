@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produits — StockLedger</title>
+    <link rel="icon" type="image/png" href="../stockeledeger.png">
     <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="app-layout">
 
     <aside class="sidebar">
-        <div class="logo">StockLedger</div>
+        <div class="logo">
+            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+        </div>
         <nav>
-            <a href="dashboard.html">📊 Dashboard</a>
-            <a href="products.html" class="active">📦 Produits</a>
-            <a href="expenses.html">💸 Dépenses</a>
-            <a href="orders.html">📋 Commandes</a>
-            <a href="../caissier/pos.html">🛒 Caisse</a>
+            <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+            <a href="products.html" class="active"><i class="fa-solid fa-boxes-stacked"></i> Produits</a>
+            <a href="expenses.html"><i class="fa-solid fa-money-bill-wave"></i> Dépenses</a>
+            <a href="orders.html"><i class="fa-solid fa-receipt"></i> Commandes</a>
+            <a href="../caissier/pos.html"><i class="fa-solid fa-cash-register"></i> Caisse</a>
         </nav>
         <div class="logout"><button id="logout-btn">Déconnexion</button></div>
     </aside>
@@ -29,7 +33,7 @@
         <div class="content">
 
             <div class="card" style="margin-bottom:1.2rem">
-                <div class="section-title">➕ Ajouter un produit</div>
+                <div class="section-title"><i class="fa-solid fa-plus"></i> Ajouter un produit</div>
                 <form id="product-form">
                     <div class="form-row">
                         <input type="text" name="name" placeholder="Nom du produit" required>
@@ -47,7 +51,7 @@
 
             <div class="card">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-                    <div class="section-title" style="margin:0">📦 Catalogue (<span id="product-count">0</span>)</div>
+                    <div class="section-title" style="margin:0"><i class="fa-solid fa-boxes-stacked"></i> Catalogue (<span id="product-count">0</span>)</div>
                     <input type="text" id="search" placeholder="Rechercher…" style="padding:0.5rem 0.8rem;border:1.5px solid #ddd;border-radius:8px;outline:none;font-size:0.88rem;width:220px">
                 </div>
                 <table>

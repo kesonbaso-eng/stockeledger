@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caisse — StockLedger</title>
+    <link rel="icon" type="image/png" href="../stockeledeger.png">
     <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="app-layout">
 
     <aside class="sidebar">
-        <div class="logo">StockLedger</div>
+        <div class="logo">
+            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+        </div>
         <nav>
-            <a href="pos.html" class="active">🛒 Caisse</a>
-            <a href="history.html">📋 Historique</a>
+            <a href="pos.html" class="active"><i class="fa-solid fa-cash-register"></i> Caisse</a>
+            <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> Historique</a>
         </nav>
         <div class="logout">
             <button id="logout-btn">Déconnexion</button>
@@ -29,7 +33,6 @@
         <div class="content">
             <div class="pos-layout">
 
-                <!-- CATALOGUE -->
                 <div class="pos-catalog card">
                     <div class="search-bar">
                         <input type="text" id="search" placeholder="Rechercher un produit ou scanner un code-barres…" autofocus>
@@ -39,18 +42,22 @@
                     </div>
                 </div>
 
-                <!-- PANIER -->
                 <div class="pos-cart card">
-                    <div class="cart-header">🛒 Panier <span id="cart-count" style="color:var(--muted);font-weight:400;font-size:0.85rem"></span></div>
+                    <div class="cart-header">
+                        <i class="fa-solid fa-cart-shopping"></i> Panier
+                        <span id="cart-count" class="cart-count-badge"></span>
+                    </div>
                     <div class="cart-items" id="cart-items">
-                        <p style="color:var(--muted);font-size:0.88rem;text-align:center;margin-top:2rem">Panier vide</p>
+                        <p class="cart-empty">Panier vide</p>
                     </div>
                     <div class="cart-footer">
                         <div class="cart-total">
                             <span>Total</span>
                             <span id="cart-total">0 FCFA</span>
                         </div>
-                        <button class="btn-validate" id="validate-btn" disabled>✅ Valider la vente</button>
+                        <button class="btn-validate" id="validate-btn" disabled>
+                            <i class="fa-solid fa-check"></i> Valider la vente
+                        </button>
                     </div>
                 </div>
 
@@ -59,20 +66,20 @@
     </div>
 </div>
 
-<!-- MODAL CONFIRMATION -->
 <div class="modal-overlay hidden" id="confirm-modal">
     <div class="modal">
         <h3>Confirmer la vente</h3>
         <div id="receipt-preview" class="receipt"></div>
         <div class="modal-actions">
             <button class="btn-cancel" id="cancel-btn">Annuler</button>
-            <button class="btn-add" id="confirm-btn">Confirmer & Imprimer</button>
+            <button class="btn-add" id="confirm-btn">
+                <i class="fa-solid fa-print"></i> Confirmer &amp; Imprimer
+            </button>
         </div>
     </div>
 </div>
 
 <div class="toast" id="toast"></div>
-
 <script type="module" src="pos.js"></script>
 </body>
 </html>

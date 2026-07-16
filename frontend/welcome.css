@@ -1,0 +1,84 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+}
+
+.welcome-card {
+    text-align: center;
+    padding: 3rem 2.5rem;
+    max-width: 480px; width: 100%;
+}
+
+.logo {
+    width: 80px; height: 80px;
+    border-radius: 16px; background: #fff;
+    padding: 8px; object-fit: contain;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.checkmark {
+    width: 72px; height: 72px;
+    background: #27ae60; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    animation: pop 0.4s ease;
+}
+
+.checkmark img { width: 36px; height: 36px; filter: brightness(0) invert(1); }
+
+@keyframes pop {
+    0%   { transform: scale(0); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+
+.welcome-name {
+    color: #e94560; font-size: 1.1rem;
+    margin-bottom: 1rem; min-height: 1.5rem;
+}
+
+p {
+    color: rgba(255,255,255,0.7); font-size: 0.92rem;
+    line-height: 1.6; margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%; height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px; overflow: hidden; margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%; background: #e94560;
+    border-radius: 2px; width: 0%;
+    transition: width 3s linear;
+}
+
+.redirect-msg { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+
+.btn-now {
+    display: inline-block; margin-top: 1.5rem;
+    padding: 0.75rem 2rem; background: #e94560; color: #fff;
+    border-radius: 8px; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; border: none; transition: background 0.2s;
+}
+.btn-now:hover { background: #c73652; }
+
+.role-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;
+}
+.role-badge img { width: 16px; height: 16px; }
+.role-badge.admin   { background: rgba(15,52,96,0.6); border: 1px solid #0f3460; color: #7eb3ff; }
+.role-badge.cashier { background: rgba(39,174,96,0.2); border: 1px solid #27ae60; color: #4ade80; }
+
+.hidden { display: none !important; }

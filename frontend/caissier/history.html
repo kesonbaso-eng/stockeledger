@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historique — StockLedger</title>
+    <link rel="icon" type="image/png" href="../stockeledeger.png">
     <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="app-layout">
 
     <aside class="sidebar">
-        <div class="logo">StockLedger</div>
+        <div class="logo">
+            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+        </div>
         <nav>
-            <a href="pos.html">🛒 Caisse</a>
-            <a href="history.html" class="active">📋 Historique</a>
+            <a href="pos.html"><i class="fa-solid fa-cash-register"></i> Caisse</a>
+            <a href="history.html" class="active"><i class="fa-solid fa-clock-rotate-left"></i> Historique</a>
         </nav>
         <div class="logout">
             <button id="logout-btn">Déconnexion</button>
@@ -46,14 +50,15 @@
     </div>
 </div>
 
-<!-- MODAL DÉTAIL COMMANDE -->
 <div class="modal-overlay hidden" id="detail-modal">
     <div class="modal">
         <h3>Détail de la commande</h3>
         <div id="detail-content"></div>
         <div class="modal-actions">
             <button class="btn-cancel" id="close-detail">Fermer</button>
-            <button class="btn-add" onclick="window.print()">🖨️ Imprimer</button>
+            <button class="btn-add" onclick="window.print()">
+                <i class="fa-solid fa-print"></i> Imprimer
+            </button>
         </div>
     </div>
 </div>

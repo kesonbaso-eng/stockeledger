@@ -39,12 +39,26 @@ body {
 }
 
 .sidebar .logo {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     text-align: center;
     padding: 0 1rem 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.sidebar-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #fff;
+    padding: 2px;
+    object-fit: contain;
 }
 
 .sidebar nav a {
@@ -229,7 +243,19 @@ body {
 .cart-item .ci-price { min-width: 60px; text-align: right; font-weight: 600; }
 .cart-item .ci-remove { color: var(--red); cursor: pointer; font-size: 1rem; background: none; border: none; }
 
-.cart-footer {
+.cart-count-badge {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin-left: 0.3rem;
+}
+
+.cart-empty {
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-align: center;
+    margin-top: 2rem;
+}
     border-top: 2px solid #eee;
     padding-top: 0.8rem;
     margin-top: 0.5rem;

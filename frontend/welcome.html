@@ -5,121 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue — StockLedger</title>
     <link rel="icon" type="image/png" href="stockeledeger.png">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e, #0f3460);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff;
-        }
-
-        .welcome-card {
-            text-align: center;
-            padding: 3rem 2.5rem;
-            max-width: 480px;
-            width: 100%;
-        }
-
-        .logo {
-            width: 80px; height: 80px;
-            border-radius: 16px;
-            background: #fff;
-            padding: 8px;
-            object-fit: contain;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-
-        .checkmark {
-            width: 72px; height: 72px;
-            background: #27ae60;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            animation: pop 0.4s ease;
-        }
-
-        @keyframes pop {
-            0%   { transform: scale(0); opacity: 0; }
-            70%  { transform: scale(1.15); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
-
-        .welcome-name {
-            color: #e94560;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            min-height: 1.5rem;
-        }
-
-        p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #e94560;
-            border-radius: 2px;
-            width: 0%;
-            transition: width 3s linear;
-        }
-
-        .redirect-msg {
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .btn-now {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.75rem 2rem;
-            background: #e94560;
-            color: #fff;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            border: none;
-            transition: background 0.2s;
-        }
-
-        .btn-now:hover { background: #c73652; }
-
-        .role-badge {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .role-badge.admin   { background: rgba(15,52,96,0.6); border: 1px solid #0f3460; color: #7eb3ff; }
-        .role-badge.cashier { background: rgba(39,174,96,0.2); border: 1px solid #27ae60; color: #4ade80; }
-    </style>
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="welcome-card">
-        <img src="stockeledeger.png" alt="Logo" class="logo">
-        <div class="checkmark">✓</div>
+        <img src="stockeledeger.png" alt="Logo StockLedger" class="logo">
+        <div class="checkmark">
+            <i class="fa-solid fa-check fa-xl"></i>
+        </div>
         <h1>Bienvenue !</h1>
         <div class="welcome-name" id="welcome-name"></div>
         <div class="role-badge hidden" id="role-badge"></div>
@@ -128,78 +22,12 @@
             <div class="progress-fill" id="progress"></div>
         </div>
         <div class="redirect-msg" id="redirect-msg">Redirection dans 3 secondes…</div>
-        <button class="btn-now" id="btn-now">Accéder maintenant →</button>
+        <button class="btn-now" id="btn-now">
+            Accéder maintenant
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
-            authDomain: "stockledger-7b8ec.firebaseapp.com",
-            projectId: "stockledger-7b8ec",
-        };
-
-        const app  = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const BACKEND = 'http://127.0.0.1:8000';
-
-        let destination = '';
-
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) { window.location.href = 'login.html'; return; }
-
-            // Afficher le nom/email
-            const name = user.displayName || user.email.split('@')[0];
-            document.getElementById('welcome-name').textContent = name;
-
-            // Récupérer le rôle depuis le backend
-            try {
-                const token = await user.getIdToken();
-                const res = await fetch(`${BACKEND}/api/auth/me/`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
-                const role = data.role;
-
-                const badge = document.getElementById('role-badge');
-                badge.textContent = role === 'admin' ? '👑 Administrateur' : '🧾 Caissier';
-                badge.className = `role-badge ${role}`;
-                badge.classList.remove('hidden');
-
-                if (role === 'admin') {
-                    destination = 'admin/dashboard.html';
-                    document.getElementById('welcome-msg').textContent =
-                        'Votre espace administrateur est prêt. Gérez vos produits, ventes et finances.';
-                } else {
-                    destination = 'caissier/pos.html';
-                    document.getElementById('welcome-msg').textContent =
-                        'Votre interface de caisse est prête. Bonne journée de vente !';
-                }
-            } catch {
-                destination = 'login.html';
-            }
-
-            // Barre de progression + compte à rebours
-            let seconds = 3;
-            document.getElementById('progress').style.width = '100%';
-
-            const interval = setInterval(() => {
-                seconds--;
-                document.getElementById('redirect-msg').textContent =
-                    `Redirection dans ${seconds} seconde${seconds > 1 ? 's' : ''}…`;
-                if (seconds <= 0) {
-                    clearInterval(interval);
-                    window.location.href = destination;
-                }
-            }, 1000);
-
-            document.getElementById('btn-now').addEventListener('click', () => {
-                clearInterval(interval);
-                window.location.href = destination;
-            });
-        });
-    </script>
+    <script type="module" src="welcome.js"></script>
 </body>
 </html>

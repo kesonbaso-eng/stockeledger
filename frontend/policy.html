@@ -4,165 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité — StockLedger</title>
+    <link rel="icon" type="image/png" href="stockeledeger.png">
+    <link rel="stylesheet" href="policy.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="/frontend/stockeledger.png" type="image/x-icon">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f5f7fa;
-            color: #1a1a2e;
-            line-height: 1.7;
-        }
-
-        /* ── HEADER ── */
-        header {
-            background: #0f3460;
-            color: #fff;
-            padding: 1.2rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        header img {
-            height: 48px;
-            width: 48px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: #fff;
-            padding: 4px;
-        }
-
-        header .brand { display: flex; flex-direction: column; }
-        header .brand span:first-child { font-size: 1.4rem; font-weight: 700; letter-spacing: 1px; }
-        header .brand span:last-child  { font-size: 0.8rem; opacity: 0.75; }
-
-        /* ── HERO ── */
-        .hero {
-            background: linear-gradient(135deg, #0f3460, #16213e);
-            color: #fff;
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-        }
-
-        .hero h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .hero p  { font-size: 0.9rem; opacity: 0.75; }
-
-        /* ── CONTENU ── */
-        main {
-            max-width: 860px;
-            margin: 2rem auto;
-            padding: 0 1.5rem 3rem;
-        }
-
-        .section {
-            background: #fff;
-            border-radius: 10px;
-            padding: 1.8rem 2rem;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .section h2 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #0f3460;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #333;
-            margin: 1rem 0 0.4rem;
-        }
-
-        .section p  { font-size: 0.92rem; color: #444; margin-bottom: 0.6rem; }
-
-        .section ul {
-            padding-left: 1.4rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .section ul li { margin-bottom: 0.4rem; }
-
-        .badge-date {
-            display: inline-block;
-            background: #eef2ff;
-            color: #0f3460;
-            font-size: 0.8rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: #0f3460;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 1.5rem;
-        }
-
-        footer h2 { font-size: 1rem; margin-bottom: 0.8rem; }
-        footer p  { font-size: 0.85rem; opacity: 0.8; margin-bottom: 1rem; }
-
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-icons a { transition: opacity 0.2s; }
-        .contact-icons a:hover { opacity: 0.75; }
-
-        .back-link {
-            display: inline-block;
-            margin: 1.5rem auto 0;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.85rem;
-            text-decoration: none;
-        }
-
-        .back-link:hover { color: #fff; }
-    </style>
 </head>
 <body>
 
     <header>
-        <img src="/frontend/stockeledger.png" alt="Logo StockLedger">
+        <img src="stockeledeger.png" alt="Logo StockLedger">
         <div class="brand">
-            <span>StockLedger</span>
-            <span>Gestion de boutique SaaS</span>
+            <span class="brand-name">StockLedger</span>
+            <span class="brand-sub">Gestion de boutique SaaS</span>
         </div>
     </header>
 
-    <div class="hero">
+    <div class="hero-policy">
         <h1>Politique de Confidentialité</h1>
         <p>Protection et traitement de vos données personnelles et commerciales</p>
     </div>
 
     <main>
-        <div style="text-align:center">
-            <span class="badge-date"> Dernière mise à jour : 14 juillet 2026</span>
+        <div class="date-center">
+            <span class="badge-date">
+                <i class="fa-regular fa-calendar"></i>
+                Dernière mise à jour : 14 juillet 2026
+            </span>
         </div>
 
-        <p style="font-size:0.92rem;color:#555;margin-bottom:1.5rem">
+        <p class="intro">
             La présente Politique de Confidentialité a pour objectif de vous informer de manière transparente
             sur la manière dont nous collectons, utilisons, partageons et protégeons vos données personnelles
             et professionnelles lors de l'utilisation de StockLedger.
         </p>
 
         <div class="section">
-            <h2> 1. Données que nous collectons</h2>
+            <h2><i class="fa-solid fa-clipboard-list"></i> 1. Données que nous collectons</h2>
             <h3>1.1 Données d'identification et de création de compte</h3>
             <ul>
                 <li>Nom, prénom, adresse e-mail, numéro de téléphone du commerçant.</li>
@@ -189,7 +65,7 @@
         </div>
 
         <div class="section">
-            <h2> 2. Pourquoi utilisons-nous ces données ?</h2>
+            <h2><i class="fa-solid fa-bullseye"></i> 2. Pourquoi utilisons-nous ces données ?</h2>
             <ul>
                 <li>Fournir le service POS, mise à jour des stocks et génération des factures.</li>
                 <li>Gérer la séparation sécurisée des accès Administrateur / Caissier.</li>
@@ -201,8 +77,8 @@
         </div>
 
         <div class="section">
-            <h2> 3. Partage des données</h2>
-            <p>We do not sell, rent, or trade your data. Elles ne sont partagées qu'avec :</p>
+            <h2><i class="fa-solid fa-handshake"></i> 3. Partage des données</h2>
+            <p>Nous ne vendons, ne louons ni ne commercialisons vos données. Elles ne sont partagées qu'avec :</p>
             <ul>
                 <li>Prestataires d'hébergement cloud sécurisés.</li>
                 <li>Opérateurs Mobile Money pour la validation des abonnements.</li>
@@ -211,17 +87,17 @@
         </div>
 
         <div class="section">
-            <h2> 4. Sécurité de vos données</h2>
+            <h2><i class="fa-solid fa-lock"></i> 4. Sécurité de vos données</h2>
             <ul>
                 <li><strong>Chiffrement :</strong> transferts protégés par SSL/TLS (HTTPS). Mots de passe hachés, jamais stockés en clair.</li>
                 <li><strong>Contrôle d'accès :</strong> seul le personnel technique autorisé accède aux bases de données.</li>
-                <li><strong>Sauvegardes :</strong> sauvegardes régulières et automatisées pour prévenir toute perte de données.</li>
+                <li><strong>Sauvegardes :</strong> backups réguliers pour prévenir toute perte de données.</li>
                 <li><strong>Isolation :</strong> vos données sont strictement séparées de celles des autres boutiques.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2> 5. Durée de conservation</h2>
+            <h2><i class="fa-solid fa-clock"></i> 5. Durée de conservation</h2>
             <ul>
                 <li>Données de compte et de stock : conservées pendant toute la durée de l'abonnement actif.</li>
                 <li>Après résiliation : données conservées 6 mois en quarantaine, puis supprimées définitivement.</li>
@@ -230,7 +106,7 @@
         </div>
 
         <div class="section">
-            <h2>6. Vos droits</h2>
+            <h2><i class="fa-solid fa-circle-check"></i> 6. Vos droits</h2>
             <ul>
                 <li><strong>Droit d'accès :</strong> consulter toutes les informations liées à votre compte.</li>
                 <li><strong>Droit de rectification :</strong> modifier vos informations depuis le tableau de bord.</li>
@@ -241,7 +117,7 @@
         </div>
 
         <div class="section">
-            <h2> 7. Cookies</h2>
+            <h2><i class="fa-solid fa-cookie-bite"></i> 7. Cookies</h2>
             <ul>
                 <li><strong>Cookies nécessaires :</strong> maintiennent la session active (caissier, admin) et gèrent les rôles.</li>
                 <li><strong>Cookies de performance :</strong> mesurent la vitesse et détectent les erreurs.</li>
@@ -250,7 +126,7 @@
         </div>
 
         <div class="section">
-            <h2> 8. Modifications</h2>
+            <h2><i class="fa-solid fa-pen-to-square"></i> 8. Modifications</h2>
             <p>
                 Nous nous réservons le droit de modifier cette politique à tout moment. Toute modification
                 substantielle sera notifiée sur votre tableau de bord ou par e-mail.
@@ -262,17 +138,19 @@
         <h2>Nous contacter</h2>
         <p>Pour toute question relative à cette politique ou pour exercer vos droits :</p>
         <div class="contact-icons">
-            <a href="mailto:kesonbaso@gmail.com" title="E-mail" aria-label="Envoyer un e-mail au support" style="color:#ea4335">
+            <a href="mailto:kesonbaso@gmail.com" title="E-mail" style="color:#ea4335">
                 <i class="fa-solid fa-envelope"></i>
             </a>
-            <a href="tel:+22879664863" title="Téléphone" aria-label="Nous contacter par téléphone" style="color:#4ade80">
+            <a href="tel:+22879664863" title="Téléphone" style="color:#4ade80">
                 <i class="fa-solid fa-phone"></i>
             </a>
-            <a href="https://wa.me/22879664863" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="Nous contacter sur WhatsApp" style="color:#25D366">
+            <a href="https://wa.me/22879664863" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="color:#25D366">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
         </div>
-        <a href="register.html" class="back-link">← Retour à l'inscription</a>
+        <a href="register.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Retour à l'inscription
+        </a>
     </footer>
 
 </body>

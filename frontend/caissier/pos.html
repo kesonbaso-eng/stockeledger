@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caisse — StockLedger</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">StockLedger</div>
+        <nav>
+            <a href="pos.html" class="active">🛒 Caisse</a>
+            <a href="history.html">📋 Historique</a>
+        </nav>
+        <div class="logout">
+            <button id="logout-btn">Déconnexion</button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2>Point de Vente</h2>
+            <span class="user-info" id="user-info">Chargement…</span>
+        </div>
+
+        <div class="content">
+            <div class="pos-layout">
+
+                <!-- CATALOGUE -->
+                <div class="pos-catalog card">
+                    <div class="search-bar">
+                        <input type="text" id="search" placeholder="Rechercher un produit ou scanner un code-barres…" autofocus>
+                    </div>
+                    <div class="product-grid" id="product-grid">
+                        <p style="color:var(--muted)">Chargement du catalogue…</p>
+                    </div>
+                </div>
+
+                <!-- PANIER -->
+                <div class="pos-cart card">
+                    <div class="cart-header">🛒 Panier <span id="cart-count" style="color:var(--muted);font-weight:400;font-size:0.85rem"></span></div>
+                    <div class="cart-items" id="cart-items">
+                        <p style="color:var(--muted);font-size:0.88rem;text-align:center;margin-top:2rem">Panier vide</p>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-total">
+                            <span>Total</span>
+                            <span id="cart-total">0 FCFA</span>
+                        </div>
+                        <button class="btn-validate" id="validate-btn" disabled>✅ Valider la vente</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMATION -->
+<div class="modal-overlay hidden" id="confirm-modal">
+    <div class="modal">
+        <h3>Confirmer la vente</h3>
+        <div id="receipt-preview" class="receipt"></div>
+        <div class="modal-actions">
+            <button class="btn-cancel" id="cancel-btn">Annuler</button>
+            <button class="btn-add" id="confirm-btn">Confirmer & Imprimer</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="pos.js"></script>
+</body>
+</html>

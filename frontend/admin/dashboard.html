@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — StockLedger</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">StockLedger</div>
+        <nav>
+            <a href="dashboard.html" class="active">📊 Dashboard</a>
+            <a href="products.html">📦 Produits</a>
+            <a href="expenses.html">💸 Dépenses</a>
+            <a href="orders.html">📋 Commandes</a>
+            <a href="../caissier/pos.html">🛒 Caisse</a>
+        </nav>
+        <div class="logout">
+            <button id="logout-btn">Déconnexion</button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2 id="month-title">Dashboard</h2>
+            <span class="user-info" id="user-info">Chargement…</span>
+        </div>
+
+        <div class="content">
+
+            <!-- STATS -->
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="label">Chiffre d'affaires</div>
+                    <div class="value blue" id="stat-revenue">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Dépenses</div>
+                    <div class="value red" id="stat-expenses">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Bénéfice net</div>
+                    <div class="value" id="stat-profit">—</div>
+                </div>
+            </div>
+
+            <!-- ALERTES STOCK -->
+            <div class="card" id="low-stock-section" style="margin-bottom:1.2rem">
+                <div class="section-title">⚠️ Alertes de rupture de stock</div>
+                <div id="low-stock-list"><p style="color:var(--muted);font-size:0.88rem">Chargement…</p></div>
+            </div>
+
+            <!-- AJOUTER PRODUIT -->
+            <div class="card" style="margin-bottom:1.2rem">
+                <div class="section-title">➕ Ajouter un produit</div>
+                <form id="product-form">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Nom du produit" required>
+                        <input type="text" name="barcode" placeholder="Code-barres (optionnel)">
+                    </div>
+                    <div class="form-row">
+                        <input type="number" name="purchase_price" placeholder="Prix d'achat" min="0" step="1" required>
+                        <input type="number" name="sale_price" placeholder="Prix de vente" min="0" step="1" required>
+                        <input type="number" name="stock" placeholder="Stock initial" min="0" required>
+                        <button type="submit" class="btn-add">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CATALOGUE -->
+            <div class="card" style="margin-bottom:1.2rem">
+                <div class="section-title">📦 Catalogue produits</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix achat</th>
+                            <th>Prix vente</th>
+                            <th>Stock</th>
+                            <th>Statut</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table"></tbody>
+                </table>
+            </div>
+
+            <!-- AJOUTER DÉPENSE -->
+            <div class="card" style="margin-bottom:1.2rem">
+                <div class="section-title">💸 Enregistrer une dépense</div>
+                <form id="expense-form">
+                    <div class="form-row">
+                        <input type="text" name="label" placeholder="Libellé (ex: Loyer, Salaire…)" required>
+                        <input type="number" name="amount" placeholder="Montant" min="0" step="1" required>
+                        <button type="submit" class="btn-add">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- DÉPENSES DU MOIS -->
+            <div class="card">
+                <div class="section-title">📋 Dépenses du mois</div>
+                <table>
+                    <thead>
+                        <tr><th>Libellé</th><th>Montant</th><th>Date</th></tr>
+                    </thead>
+                    <tbody id="expenses-table"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- MODAL MODIFIER PRODUIT -->
+<div class="modal-overlay hidden" id="edit-modal">
+    <div class="modal">
+        <h3>Modifier le produit</h3>
+        <form id="edit-form">
+            <input type="hidden" name="id">
+            <div class="form-row">
+                <input type="text" name="name" placeholder="Nom" required>
+                <input type="number" name="sale_price" placeholder="Prix de vente" required>
+            </div>
+            <div class="form-row">
+                <input type="number" name="stock" placeholder="Stock" required>
+                <input type="number" name="low_stock_threshold" placeholder="Seuil alerte">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" id="edit-cancel">Annuler</button>
+                <button type="submit" class="btn-add">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>

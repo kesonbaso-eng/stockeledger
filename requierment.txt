@@ -1,0 +1,111 @@
+Voici un modèle complet et détaillé de Politique de Confidentialité, spécialement rédigé et structuré pour une application SaaS de gestion de caisse, de stock et de facturation.
+
+Ce document est prêt à être intégré dans les mentions légales de votre plateforme.
+
+Politique de Confidentialité et de Protection des Données Personnelles
+Date de dernière mise à jour : 14 juillet 2026
+
+La présente Politique de Confidentialité a pour objectif de vous informer de manière transparente sur la manière dont nous collectons, utilisons, partageons et protégeons vos données personnelles et professionnelles lors de l'utilisation de notre logiciel de gestion commerciale et de notre site web.
+
+1. Données que nous collectons
+Dans le cadre de l'utilisation de nos services, nous sommes amenés à collecter différentes catégories de données, réparties comme suit :
+
+1.1. Données d'identification et de création de compte
+Informations du commerçant / administrateur : Nom, prénom, adresse e-mail, numéro de téléphone.
+
+Informations de l'entreprise : Nom de la boutique ou de la société, adresse physique, Numéro d'Identification Fiscale (IFU), numéro de Registre du Commerce (RCCM) ou équivalent.
+
+Identifiants de connexion : Mots de passe chiffrés, identifiants de session.
+
+1.2. Données d'exploitation commerciale (Vos données métier)
+Gestion des stocks : Liste de vos produits, descriptions, prix d'achat, prix de vente, quantités disponibles, alertes de rupture.
+
+Données de transaction (Caisse) : Historique des ventes, montants encaissés, dates et heures des transactions, paniers validés.
+
+Données financières : Registre des entrées et sorties (cashflow), historique des dépenses enregistrées (loyers, salaires, charges), calculs de bénéfices et pertes.
+
+Données clients (Vos propres clients) : Si vous choisissez de renseigner les informations de vos acheteurs pour la facturation (noms, contacts, historique d'achat). Vous agissez en tant que responsable de traitement de ces données spécifiques.
+
+1.3. Données de paiement et d'abonnement
+Historique de facturation de votre abonnement à notre logiciel.
+
+Informations relatives au moyen de paiement utilisé (ex: numéros de téléphone associés aux comptes Mobile Money, références de transaction). Note : Nous ne stockons pas les numéros de carte bancaire, ces derniers étant traités directement par nos partenaires financiers sécurisés.
+
+1.4. Données techniques et de navigation
+Adresse IP, type de navigateur, type d'appareil (ordinateur, tablette, smartphone) utilisé pour accéder au logiciel.
+
+Journaux de connexion (logs) pour des raisons de sécurité et de débogage.
+
+2. Finalités de la collecte : Pourquoi utilisons-nous ces données ?
+Nous traitons vos données exclusivement pour les finalités suivantes :
+
+Fourniture du service logiciel : Garantir le bon fonctionnement des modules de point de vente (POS), de mise à jour des stocks et de génération des factures.
+
+Gestion des comptes et des rôles : Assurer la séparation sécurisée entre les accès "Administrateur" et les accès "Caissier".
+
+Facturation et gestion des abonnements : Gérer vos renouvellements, vérifier les dates d'expiration et prévenir les coupures de service.
+
+Support technique et assistance : Vous aider à résoudre les problèmes techniques ou les erreurs de saisie dans votre inventaire.
+
+Amélioration continue : Analyser les données d'utilisation de manière anonyme pour optimiser l'interface et créer de nouvelles fonctionnalités.
+
+Respect des obligations légales : Conserver les données de facturation et d'abonnement conformément à la législation fiscale et commerciale en vigueur.
+
+3. Partage et transmission des données
+Nous ne vendons, ne louons, ni ne commercialisons vos données à des tiers. Vos informations ne sont partagées qu'avec les entités suivantes, et uniquement dans la limite de ce qui est strictement nécessaire :
+
+Prestataires d'hébergement : Nos serveurs et bases de données sécurisés (cloud) qui stockent l'infrastructure du logiciel.
+
+Passerelles de paiement : Les opérateurs de Mobile Money ou agrégateurs de paiement locaux qui traitent la validation de vos abonnements mensuels.
+
+Autorités judiciaires ou administratives : Uniquement si la loi nous y oblige (réquisition judiciaire, enquête pour fraude).
+
+4. Sécurité de vos données
+Nous mettons en œuvre des mesures techniques et organisationnelles rigoureuses pour protéger votre activité commerciale :
+
+Chiffrement : Les transferts de données entre votre navigateur et nos serveurs sont protégés par le protocole SSL/TLS (HTTPS). Les mots de passe sont hachés et ne sont jamais stockés en clair.
+
+Contrôle d'accès : Seul le personnel technique autorisé a un accès restreint aux bases de données, uniquement à des fins de maintenance.
+
+Sauvegardes (Backups) : Des sauvegardes régulières sont effectuées pour prévenir toute perte de vos données de stock ou de vos historiques de facturation en cas d'incident matériel.
+
+Isolation des environnements : Vos données commerciales sont strictement séparées de celles des autres boutiques utilisant le logiciel.
+
+5. Durée de conservation
+Données de compte et de stock : Conservées pendant toute la durée de votre abonnement actif.
+
+En cas de résiliation ou d'expiration : Si votre abonnement expire, vos données commerciales (inventaire, historique) sont conservées en quarantaine pendant une durée de [Indiquer la durée, ex: 6 mois] pour vous permettre de réactiver votre compte sans perte. Passé ce délai, elles seront définitivement supprimées ou anonymisées.
+
+Données légales de facturation : Les factures liées à l'achat de votre abonnement sont conservées pendant la durée légale applicable (généralement 10 ans) à des fins comptables.
+
+6. Vos droits sur vos données
+Conformément aux réglementations sur la protection des données (y compris les standards internationaux comme le RGPD et les lois locales applicables sur les données personnelles), vous disposez des droits suivants :
+
+Droit d'accès : Vous pouvez consulter toutes les informations liées à votre compte.
+
+Droit de rectification : Vous pouvez modifier à tout moment les informations de votre entreprise, vos mots de passe ou votre inventaire depuis votre tableau de bord Administrateur.
+
+Droit à l'effacement (Droit à l'oubli) : Vous pouvez demander la suppression définitive de votre compte et de toutes vos données commerciales.
+
+Droit à la portabilité : Vous pouvez demander une exportation de vos données (votre liste de produits, vos transactions) dans un format structuré (ex: fichier CSV ou Excel) pour une utilisation externe.
+
+Droit d'opposition et de limitation : Vous pouvez vous opposer à certaines communications marketing ou demander la suspension temporaire du traitement de vos données.
+
+7. Politique relative aux Cookies et Traceurs
+Notre logiciel utilise des cookies pour assurer son bon fonctionnement :
+
+Cookies strictement nécessaires : Essentiels pour maintenir votre session de connexion active (éviter que le caissier ne soit déconnecté en pleine vente) et gérer les rôles de sécurité.
+
+Cookies de performance : Nous permettent de mesurer la vitesse de chargement de l'application et de détecter les erreurs de code.
+
+Refus des cookies : Étant donné la nature SaaS du logiciel, la désactivation des cookies essentiels rendra l'utilisation de l'interface de caisse et d'administration impossible.
+
+8. Modifications de la présente politique
+Nous nous réservons le droit de modifier cette Politique de Confidentialité à tout moment pour nous conformer aux évolutions légales ou techniques. Toute modification substantielle vous sera notifiée directement sur votre tableau de bord au sein de l'application ou par courrier électronique.
+
+9. Nous contacter
+Pour toute question concernant cette Politique de Confidentialité, ou pour exercer vos droits relatifs à vos données personnelles et commerciales, vous pouvez nous contacter :
+
+Par email : [Insérer l'adresse email de contact, ex: dpo@votre-domaine.com]
+
+Par courrier postal : [Insérer l'adresse physique du siège social de l'entreprise]

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes — StockLedger</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">StockLedger</div>
+        <nav>
+            <a href="dashboard.html">📊 Dashboard</a>
+            <a href="products.html">📦 Produits</a>
+            <a href="expenses.html">💸 Dépenses</a>
+            <a href="orders.html" class="active">📋 Commandes</a>
+            <a href="../caissier/pos.html">🛒 Caisse</a>
+        </nav>
+        <div class="logout"><button id="logout-btn">Déconnexion</button></div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2>Commandes</h2>
+            <div style="display:flex;align-items:center;gap:1rem">
+                <span class="user-info" id="user-info"></span>
+                <button class="btn-add" onclick="exportCSV()" style="font-size:0.85rem;padding:0.5rem 1rem">
+                    ⬇️ Export CSV
+                </button>
+            </div>
+        </div>
+        <div class="content">
+
+            <div class="stat-grid" style="margin-bottom:1.2rem">
+                <div class="stat-card">
+                    <div class="label">Total commandes</div>
+                    <div class="value blue" id="stat-count">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Chiffre d'affaires</div>
+                    <div class="value green" id="stat-revenue">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">En attente</div>
+                    <div class="value orange" id="stat-pending">—</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Caissier</th>
+                            <th>Articles</th>
+                            <th>Total</th>
+                            <th>Statut</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table">
+                        <tr><td colspan="7" style="color:var(--muted)">Chargement…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DÉTAIL -->
+<div class="modal-overlay hidden" id="detail-modal">
+    <div class="modal">
+        <h3>Détail commande <span id="detail-id"></span></h3>
+        <div id="detail-content"></div>
+        <div class="modal-actions">
+            <button class="btn-cancel" id="close-detail">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="orders.js"></script>
+</body>
+</html>

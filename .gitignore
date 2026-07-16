@@ -1,0 +1,28 @@
+# Credentials Firebase — NE JAMAIS COMMITER
+backend/*.json
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Django
+backend/db.sqlite3
+backend/staticfiles/
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp

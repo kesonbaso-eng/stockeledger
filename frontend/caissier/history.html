@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique — StockLedger</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">StockLedger</div>
+        <nav>
+            <a href="pos.html">🛒 Caisse</a>
+            <a href="history.html" class="active">📋 Historique</a>
+        </nav>
+        <div class="logout">
+            <button id="logout-btn">Déconnexion</button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2>Historique des ventes</h2>
+            <span class="user-info" id="user-info"></span>
+        </div>
+        <div class="content">
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Articles</th>
+                            <th>Total</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table">
+                        <tr><td colspan="5" style="color:var(--muted)">Chargement…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DÉTAIL COMMANDE -->
+<div class="modal-overlay hidden" id="detail-modal">
+    <div class="modal">
+        <h3>Détail de la commande</h3>
+        <div id="detail-content"></div>
+        <div class="modal-actions">
+            <button class="btn-cancel" id="close-detail">Fermer</button>
+            <button class="btn-add" onclick="window.print()">🖨️ Imprimer</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="history.js"></script>
+</body>
+</html>

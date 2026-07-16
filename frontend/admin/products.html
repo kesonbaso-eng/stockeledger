@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits — StockLedger</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="logo">StockLedger</div>
+        <nav>
+            <a href="dashboard.html">📊 Dashboard</a>
+            <a href="products.html" class="active">📦 Produits</a>
+            <a href="expenses.html">💸 Dépenses</a>
+            <a href="orders.html">📋 Commandes</a>
+            <a href="../caissier/pos.html">🛒 Caisse</a>
+        </nav>
+        <div class="logout"><button id="logout-btn">Déconnexion</button></div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2>Gestion des produits</h2>
+            <span class="user-info" id="user-info"></span>
+        </div>
+        <div class="content">
+
+            <div class="card" style="margin-bottom:1.2rem">
+                <div class="section-title">➕ Ajouter un produit</div>
+                <form id="product-form">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Nom du produit" required>
+                        <input type="text" name="barcode" placeholder="Code-barres (optionnel)">
+                    </div>
+                    <div class="form-row">
+                        <input type="number" name="purchase_price" placeholder="Prix d'achat" min="0" step="1" required>
+                        <input type="number" name="sale_price" placeholder="Prix de vente" min="0" step="1" required>
+                        <input type="number" name="stock" placeholder="Stock initial" min="0" required>
+                        <input type="number" name="low_stock_threshold" placeholder="Seuil alerte" min="0" value="5">
+                        <button type="submit" class="btn-add">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+                    <div class="section-title" style="margin:0">📦 Catalogue (<span id="product-count">0</span>)</div>
+                    <input type="text" id="search" placeholder="Rechercher…" style="padding:0.5rem 0.8rem;border:1.5px solid #ddd;border-radius:8px;outline:none;font-size:0.88rem;width:220px">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Code-barres</th>
+                            <th>Prix achat</th>
+                            <th>Prix vente</th>
+                            <th>Marge</th>
+                            <th>Stock</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table">
+                        <tr><td colspan="8" style="color:var(--muted)">Chargement…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL MODIFIER -->
+<div class="modal-overlay hidden" id="edit-modal">
+    <div class="modal">
+        <h3>Modifier le produit</h3>
+        <form id="edit-form">
+            <div class="form-row">
+                <input type="text" name="name" placeholder="Nom" required>
+                <input type="text" name="barcode" placeholder="Code-barres">
+            </div>
+            <div class="form-row">
+                <input type="number" name="purchase_price" placeholder="Prix d'achat" required>
+                <input type="number" name="sale_price" placeholder="Prix de vente" required>
+            </div>
+            <div class="form-row">
+                <input type="number" name="stock" placeholder="Stock" required>
+                <input type="number" name="low_stock_threshold" placeholder="Seuil alerte">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" id="edit-cancel">Annuler</button>
+                <button type="submit" class="btn-add">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="products.js"></script>
+</body>
+</html>

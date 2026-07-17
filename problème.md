@@ -1,0 +1,1 @@
+ quand l'utilisateur crée un compte avec google ou avec l'inscription, au lieu de redirigé vers la page de bienvenu, elle ramène sur la page de départ

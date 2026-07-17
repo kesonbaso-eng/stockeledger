@@ -3,14 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockLedger</title>
-    <meta http-equiv="refresh" content="0; url=./frontend/index.html">
-    <link rel="canonical" href="./frontend/index.html">
+    <title>StockLedger — Gérez votre boutique simplement</title>
+    <link rel="icon" type="image/png" href="frontend/stockeledger.png">
+    <link rel="stylesheet" href="frontend/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <p>Redirection vers la page d'accueil...</p>
-    <script>
-        window.location.replace('./frontend/index.html');
-    </script>
+    <nav>
+        <div class="nav-brand">
+            <img src="frontend/stockeledger.png" alt="Logo StockLedger">
+            StockLedger
+        </div>
+        <div class="nav-links">
+            <a href="#features">Fonctionnalités</a>
+            <a href="#roles">Rôles</a>
+            <a href="frontend/login.html">Connexion</a>
+            <a href="frontend/register.html" class="btn-nav">Commencer gratuitement</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-rocket"></i>
+                Logiciel SaaS de gestion de boutique
+            </div>
+            <h1>Gérez votre boutique<br><span>intelligemment</span></h1>
+            <p>
+                Caisse, stock, comptabilité et facturation en un seul outil.<br>
+                Conçu pour les commerçants qui veulent aller vite.
+            </p>
+            <div class="hero-btns">
+                <a href="frontend/register.html" class="btn-primary">Créer mon compte gratuit</a>
+                <a href="frontend/login.html" class="btn-outline">Se connecter</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="stat-icon"><i class="fa-solid fa-bolt fa-2x"></i></div>
+                    <div class="lbl">Ventes en temps réel</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="stat-icon"><i class="fa-solid fa-boxes-stacked fa-2x"></i></div>
+                    <div class="lbl">Stock automatique</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="stat-icon"><i class="fa-solid fa-chart-line fa-2x"></i></div>
+                    <div class="lbl">P&amp;L instantané</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Tout ce dont vous avez besoin</h2>
+            <p>Des outils puissants, simples à utiliser au quotidien</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-cash-register fa-lg"></i></div>
+                <h3>Caisse (POS)</h3>
+                <p>Interface de vente rapide, scanner code-barres intégré, génération de reçu instantanée.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-boxes-stacked fa-lg"></i></div>
+                <h3>Gestion du stock</h3>
+                <p>Déduction automatique à chaque vente. Alertes visuelles quand le stock est bas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-chart-pie fa-lg"></i></div>
+                <h3>Dashboard P&amp;L</h3>
+                <p>Chiffre d'affaires, dépenses et bénéfice net calculés en temps réel chaque mois.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-money-bill-wave fa-lg"></i></div>
+                <h3>Dépenses</h3>
+                <p>Enregistrez loyers, salaires et charges. Le bénéfice net se met à jour automatiquement.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-wifi fa-lg"></i></div>
+                <h3>Mode hors-ligne</h3>
+                <p>Les ventes sont sauvegardées localement et synchronisées dès le retour en ligne.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-file-csv fa-lg"></i></div>
+                <h3>Export CSV</h3>
+                <p>Exportez tout l'historique de vos ventes en un clic pour votre comptable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="roles" id="roles">
+        <div class="section-header">
+            <h2>Deux rôles, deux accès</h2>
+            <p>Déléguez la vente sans exposer vos finances</p>
+        </div>
+        <div class="roles-grid">
+            <div class="role-card admin">
+                <div class="role-title">
+                    <i class="fa-solid fa-crown"></i>
+                    Administrateur
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-check icon-success"></i> Interface de caisse (POS)</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Ajouter / modifier / supprimer des produits</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Voir le tableau de bord financier (P&amp;L)</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Saisir et consulter les dépenses</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Ajuster manuellement le stock</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Exporter les ventes en CSV</li>
+                </ul>
+            </div>
+            <div class="role-card cashier">
+                <div class="role-title">
+                    <i class="fa-solid fa-receipt"></i>
+                    Caissier
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-check icon-success"></i> Interface de caisse (POS)</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Voir les quantités en stock</li>
+                    <li><i class="fa-solid fa-check icon-success"></i> Consulter son historique de ventes</li>
+                    <li><i class="fa-solid fa-xmark icon-danger"></i> Modifier les prix ou le catalogue</li>
+                    <li><i class="fa-solid fa-xmark icon-danger"></i> Voir le chiffre d'affaires</li>
+                    <li><i class="fa-solid fa-xmark icon-danger"></i> Accéder aux dépenses</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Prêt à démarrer ?</h2>
+        <p>Créez votre compte en 30 secondes. Aucune carte bancaire requise.</p>
+        <a href="frontend/register.html" class="btn-cta">Commencer gratuitement</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 StockLedger &mdash; <a href="frontend/policy.html">Politique de confidentialité</a></p>
+    </footer>
 </body>
 </html>

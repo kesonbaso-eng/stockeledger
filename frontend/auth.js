@@ -10,9 +10,17 @@ import {
     setPersistence
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
+function getConfiguredAuthDomain() {
+    const hostname = window.location.hostname;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return 'stockledger-7b8ec.firebaseapp.com';
+    }
+    return hostname;
+}
+
 const firebaseConfig = {
     apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
-    authDomain: "stockledger-7b8ec.firebaseapp.com",
+    authDomain: getConfiguredAuthDomain(),
     projectId: "stockledger-7b8ec",
     storageBucket: "stockledger-7b8ec.firebasestorage.app",
     messagingSenderId: "574456739117",
@@ -98,7 +106,9 @@ getRedirectResult(auth)
     })
     .catch((err) => {
         setGoogleBtnLoading(false);
-        if (err.code !== 'auth/no-current-user') {
+        if (err.code === 'auth/unauthorized-domain') {
+            showError('Ce domaine n’est pas encore autorisé dans Firebase Auth. Ajoutez-le dans la console Firebase puis réessayez.');
+        } else if (err.code !== 'auth/no-current-user') {
             showError('Erreur Google : ' + err.message);
         }
     });
@@ -140,8 +150,12 @@ if (loginForm) {
         try {
             const cred = await signInWithEmailAndPassword(auth, email, password);
             await handlePostLogin(cred.user);
-        } catch {
-            showError('Email ou mot de passe incorrect.');
+        } catch (err) {
+            if (err && err.code === 'auth/invalid-credential') {
+                showError('Email ou mot de passe incorrect.');
+            } else {
+                showError(err.message || 'Impossible de se connecter pour le moment.');
+            }
         }
     });
 }

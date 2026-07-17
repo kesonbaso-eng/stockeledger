@@ -2,9 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "REMPLACER_PAR_VARIABLE_ENV",
+    apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
     authDomain: "stockledger-7b8ec.firebaseapp.com",
     projectId: "stockledger-7b8ec",
+    storageBucket: "stockledger-7b8ec.firebasestorage.app",
+    messagingSenderId: "574456739117",
+    appId: "1:574456739117:web:8180ed355451d9a9534fa4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -50,14 +53,14 @@ async function loadExpenses() {
 
         const tbody = document.getElementById('expenses-table');
         if (!expenses.length) {
-            tbody.innerHTML = '<tr><td colspan="3" style="color:var(--muted)">Aucune dépense enregistrée.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="3" class="empty-state">Aucune dépense enregistrée.</td></tr>';
             return;
         }
         tbody.innerHTML = expenses.slice().reverse().map(ex => `
             <tr>
                 <td>${ex.label}</td>
-                <td><strong style="color:var(--red)">${fmt(ex.amount)}</strong></td>
-                <td style="color:var(--muted)">${new Date(ex.created_at).toLocaleString('fr-FR')}</td>
+                <td><strong class="amount-negative">${fmt(ex.amount)}</strong></td>
+                <td class="muted-text">${new Date(ex.created_at).toLocaleString('fr-FR')}</td>
             </tr>
         `).join('');
     } catch { toast('Erreur chargement', 'error'); }

@@ -36,4 +36,7 @@ class FirebaseAuthentication(BaseAuthentication):
             pass
 
         user, _ = User.objects.get_or_create(username=uid, defaults={'email': email})
+        if not hasattr(user, 'profile'):
+            shop = Shop.objects.create(owner=user, name=f"Boutique de {user.first_name or user.username}")
+            UserProfile.objects.create(user=user, shop=shop, role='cashier', firebase_uid=uid)
         return (user, decoded)

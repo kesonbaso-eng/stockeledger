@@ -11,9 +11,35 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const BACKEND = 'http://127.0.0.1:8000';
 let destination = '';
+let authResolved = false;
+let loginRedirectTimer = null;
+
+function redirectToLogin() {
+    window.location.replace(new URL('./login.html', window.location.href).toString());
+}
+
+function clearLoginRedirectTimer() {
+    if (loginRedirectTimer) {
+        clearTimeout(loginRedirectTimer);
+        loginRedirectTimer = null;
+    }
+}
 
 onAuthStateChanged(auth, async (user) => {
-    if (!user) { window.location.href = 'login.html'; return; }
+    if (!user) {
+        if (!authResolved) {
+            clearLoginRedirectTimer();
+            loginRedirectTimer = setTimeout(() => {
+                if (!auth.currentUser) redirectToLogin();
+            }, 2500);
+            return;
+        }
+        redirectToLogin();
+        return;
+    }
+
+    authResolved = true;
+    clearLoginRedirectTimer();
 
     const name = user.displayName || user.email.split('@')[0];
     document.getElementById('welcome-name').textContent = name;
@@ -23,6 +49,7 @@ onAuthStateChanged(auth, async (user) => {
         const res   = await fetch(`${BACKEND}/api/auth/me/`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
+        if (!res.ok) throw new Error('auth failed');
         const data = await res.json();
         const role = data.role;
 
@@ -43,7 +70,9 @@ onAuthStateChanged(auth, async (user) => {
                 'Votre interface de caisse est prête. Bonne journée de vente !';
         }
     } catch {
-        destination = 'login.html';
+        destination = 'caissier/pos.html';
+        document.getElementById('welcome-msg').textContent =
+            'Votre connexion est réussie. Vous allez être redirigé vers la caisse.';
     }
 
     let seconds = 3;

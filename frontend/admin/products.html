@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produits — StockLedger</title>
-    <link rel="icon" type="image/png" href="../stockeledeger.png">
+    <link rel="icon" type="image/png" href="../stockeledger.png">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+            <img src="../stockeledger.png" alt="Logo" class="sidebar-logo"> StockLedger
         </div>
         <nav>
             <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
@@ -32,7 +32,7 @@
         </div>
         <div class="content">
 
-            <div class="card" style="margin-bottom:1.2rem">
+            <div class="card card-spaced">
                 <div class="section-title"><i class="fa-solid fa-plus"></i> Ajouter un produit</div>
                 <form id="product-form">
                     <div class="form-row">
@@ -50,9 +50,9 @@
             </div>
 
             <div class="card">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-                    <div class="section-title" style="margin:0"><i class="fa-solid fa-boxes-stacked"></i> Catalogue (<span id="product-count">0</span>)</div>
-                    <input type="text" id="search" placeholder="Rechercher…" style="padding:0.5rem 0.8rem;border:1.5px solid #ddd;border-radius:8px;outline:none;font-size:0.88rem;width:220px">
+                <div class="products-toolbar">
+                    <div class="section-title section-title-compact"><i class="fa-solid fa-boxes-stacked"></i> Catalogue (<span id="product-count">0</span>)</div>
+                    <input type="text" id="search" class="search-input" placeholder="Rechercher…">
                 </div>
                 <table>
                     <thead>
@@ -68,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody id="products-table">
-                        <tr><td colspan="8" style="color:var(--muted)">Chargement…</td></tr>
+                        <tr><td colspan="8" class="empty-state">Chargement…</td></tr>
                     </tbody>
                 </table>
             </div>

@@ -2,9 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "REMPLACER_PAR_VARIABLE_ENV",
+    apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
     authDomain: "stockledger-7b8ec.firebaseapp.com",
     projectId: "stockledger-7b8ec",
+    storageBucket: "stockledger-7b8ec.firebasestorage.app",
+    messagingSenderId: "574456739117",
+    appId: "1:574456739117:web:8180ed355451d9a9534fa4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -50,7 +53,7 @@ async function loadOrders() {
 
         const tbody = document.getElementById('orders-table');
         if (!orders.length) {
-            tbody.innerHTML = '<tr><td colspan="7" style="color:var(--muted)">Aucune commande.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Aucune commande.</td></tr>';
             return;
         }
 
@@ -58,7 +61,7 @@ async function loadOrders() {
             <tr>
                 <td>#${o.id}</td>
                 <td>${new Date(o.created_at).toLocaleString('fr-FR')}</td>
-                <td style="color:var(--muted);font-size:0.85rem">${o.cashier ?? '—'}</td>
+                <td class="muted-text small-text">${o.cashier ?? '—'}</td>
                 <td>${o.items.length}</td>
                 <td><strong>${fmt(o.total)}</strong></td>
                 <td>
@@ -70,8 +73,8 @@ async function loadOrders() {
                     }
                 </td>
                 <td>
-                    <button class="btn-add" style="padding:0.3rem 0.7rem;font-size:0.8rem"
-                        onclick='showDetail(${JSON.stringify(o).replace(/'/g, "&#39;")})'>👁️</button>
+                    <button class="btn-icon btn-edit"
+                        onclick='showDetail(${JSON.stringify(o).replace(/'/g, "&#39;")})'>Voir</button>
                 </td>
             </tr>
         `).join('');
@@ -86,14 +89,14 @@ window.showDetail = function(o) {
         `<tr><td>${i.product}</td><td>${i.quantity}</td><td>${fmt(i.unit_price)}</td><td>${fmt(i.subtotal)}</td></tr>`
     ).join('');
     document.getElementById('detail-content').innerHTML = `
-        <p style="margin-bottom:0.8rem;color:var(--muted);font-size:0.85rem">
+        <p class="detail-meta">
             ${new Date(o.created_at).toLocaleString('fr-FR')}
         </p>
         <table>
             <thead><tr><th>Produit</th><th>Qté</th><th>Prix unit.</th><th>Sous-total</th></tr></thead>
             <tbody>${lines}</tbody>
         </table>
-        <div style="text-align:right;margin-top:1rem;font-size:1.1rem;font-weight:700">
+        <div class="detail-total">
             Total : ${fmt(o.total)}
         </div>
     `;

@@ -14,7 +14,8 @@ a { text-decoration: none; }
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(15,52,96,0.97);
-    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+backdrop-filter: blur(8px);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.9rem 2.5rem;
 }
@@ -82,9 +83,19 @@ nav {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
 }
 .hero-stat { text-align: center; padding: 1rem; }
-.hero-stat .stat-icon { margin-bottom: 0.5rem; }
+.hero-stat .stat-icon { margin-bottom: 0.5rem; color: var(--accent); }
 .hero-stat .stat-icon img { width: 36px; height: 36px; filter: brightness(0) invert(1) opacity(0.85); }
 .hero-stat .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+.feature-icon { color: #fff; }
+.role-card ul li .fa-check { color: #27ae60; }
+.role-card ul li .fa-xmark { color: #e74c3c; }
+.role-title .fa-crown { color: #0f3460; }
+.role-title .fa-receipt { color: #27ae60; }
+.icon-success { color: #27ae60; }
+.icon-danger { color: #e74c3c; }
+.contact-link.mail-link { color: #ea4335; }
+.contact-link.phone-link { color: #4ade80; }
+.contact-link.whatsapp-link { color: #25D366; }
 
 /* FEATURES */
 .features { padding: 5rem 1.5rem; background: var(--light); }

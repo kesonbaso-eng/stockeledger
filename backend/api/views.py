@@ -20,7 +20,28 @@ from .permissions import IsAdmin, IsAdminOrCashier
 
 
 def get_shop(user):
-    return user.profile.shop
+    try:
+        profile = user.profile
+    except Exception:
+        profile = None
+
+    if profile and profile.shop_id:
+        return profile.shop
+
+    shop = Shop.objects.filter(owner=user).first()
+    if shop is None:
+        shop = Shop.objects.create(owner=user, name=f"Boutique de {user.first_name or user.username}")
+
+    if profile is None:
+        UserProfile.objects.get_or_create(
+            user=user,
+            defaults={'shop': shop, 'role': 'cashier', 'firebase_uid': user.username},
+        )
+    elif not profile.shop_id:
+        profile.shop = shop
+        profile.save(update_fields=['shop'])
+
+    return shop
 
 
 # --- AUTH ---
@@ -53,7 +74,15 @@ def firebase_login(request):
 
 @api_view(['GET'])
 def me(request):
-    serializer = UserProfileSerializer(request.user.profile)
+    shop = get_shop(request.user)
+    profile, _ = UserProfile.objects.get_or_create(
+        user=request.user,
+        defaults={'shop': shop, 'role': 'cashier', 'firebase_uid': request.user.username},
+    )
+    if profile.shop_id != shop.id:
+        profile.shop = shop
+        profile.save(update_fields=['shop'])
+    serializer = UserProfileSerializer(profile)
     return Response(serializer.data)
 
 

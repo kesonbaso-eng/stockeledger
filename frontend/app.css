@@ -128,6 +128,28 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
+.card-spaced { margin-bottom: 1.2rem; }
+.empty-state, .muted-text { color: var(--muted); }
+.empty-state { font-size: 0.88rem; }
+.muted-text { font-size: 0.88rem; }
+.small-text { font-size: 0.82rem; }
+.stock-badge { margin: 0.2rem; }
+.btn-icon {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-edit { background: var(--primary); color: #fff; }
+.btn-delete { background: var(--red); color: #fff; margin-left: 0.3rem; }
+.actions-cell { display: flex; gap: 0.4rem; }
+.margin-cell.positive { color: var(--green); font-weight: 600; }
+.margin-cell.negative { color: var(--red); font-weight: 600; }
+.amount-negative { color: var(--red); }
+.detail-meta { margin-bottom: 0.8rem; color: var(--muted); font-size: 0.85rem; }
+.detail-total { text-align: right; margin-top: 1rem; font-size: 1.1rem; font-weight: 700; }
+
 .stat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -360,6 +382,22 @@ tr:last-child td { border-bottom: none; }
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 1rem;
+}
+.section-title-compact { margin: 0; }
+.products-toolbar, .orders-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.search-input {
+    padding: 0.5rem 0.8rem;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.88rem;
+    width: 220px;
 }
 
 /* ── TOAST ── */

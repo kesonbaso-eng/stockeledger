@@ -2,9 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "REMPLACER_PAR_VARIABLE_ENV",
+    apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
     authDomain: "stockledger-7b8ec.firebaseapp.com",
     projectId: "stockledger-7b8ec",
+    storageBucket: "stockledger-7b8ec.firebasestorage.app",
+    messagingSenderId: "574456739117",
+    appId: "1:574456739117:web:8180ed355451d9a9534fa4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -57,7 +60,7 @@ async function loadAll() {
 async function loadDashboard() {
     try {
         const data = await api('/dashboard/');
-        document.getElementById('month-title').textContent = `Dashboard — ${data.month}`;
+        document.getElementById('month-title').textContent = `Dashboard — ${data.month || 'ce mois'}`;
         document.getElementById('stat-revenue').textContent = fmt(data.revenue);
         document.getElementById('stat-expenses').textContent = fmt(data.expenses);
         const profitEl = document.getElementById('stat-profit');
@@ -66,10 +69,10 @@ async function loadDashboard() {
 
         const lowList = document.getElementById('low-stock-list');
         if (!data.low_stock_products.length) {
-            lowList.innerHTML = '<p style="color:var(--muted);font-size:0.88rem">✅ Aucune rupture de stock.</p>';
+            lowList.innerHTML = '<p class="empty-state">Aucune rupture de stock.</p>';
         } else {
             lowList.innerHTML = data.low_stock_products.map(p => `
-                <span class="badge orange" style="margin:0.2rem">${p.name} (${p.stock} restants)</span>
+                <span class="badge orange stock-badge">${p.name} (${p.stock} restants)</span>
             `).join('');
         }
     } catch { toast('Erreur chargement dashboard', 'error'); }
@@ -83,7 +86,7 @@ async function loadProducts() {
         const tbody = document.getElementById('products-table');
         tbody.innerHTML = products.map(p => `
             <tr>
-                <td><strong>${p.name}</strong>${p.barcode ? `<br><small style="color:var(--muted)">${p.barcode}</small>` : ''}</td>
+                <td><strong>${p.name}</strong>${p.barcode ? `<br><small class="muted-text">${p.barcode}</small>` : ''}</td>
                 <td>${fmt(p.purchase_price)}</td>
                 <td>${fmt(p.sale_price)}</td>
                 <td>${p.stock}</td>
@@ -96,8 +99,8 @@ async function loadProducts() {
                     }
                 </td>
                 <td>
-                    <button class="btn-add" style="padding:0.3rem 0.7rem;font-size:0.8rem" onclick="openEdit(${JSON.stringify(p).replace(/"/g, '&quot;')})">✏️</button>
-                    <button style="padding:0.3rem 0.7rem;font-size:0.8rem;background:var(--red);color:#fff;border:none;border-radius:6px;cursor:pointer;margin-left:0.3rem" onclick="deleteProduct(${p.id})">🗑️</button>
+                    <button class="btn-icon btn-edit" onclick="openEdit(${JSON.stringify(p).replace(/"/g, '&quot;')})">Editer</button>
+                    <button class="btn-icon btn-delete" onclick="deleteProduct(${p.id})">Supprimer</button>
                 </td>
             </tr>
         `).join('');
@@ -121,6 +124,8 @@ window.openEdit = function(p) {
     const form = document.getElementById('edit-form');
     form.id_field = p.id;
     form.name.value = p.name;
+    form.barcode.value = p.barcode || '';
+    form.purchase_price.value = p.purchase_price;
     form.sale_price.value = p.sale_price;
     form.stock.value = p.stock;
     form.low_stock_threshold.value = p.low_stock_threshold;
@@ -137,6 +142,8 @@ document.getElementById('edit-form').addEventListener('submit', async (e) => {
     const id = form.id_field;
     const body = {
         name: form.name.value,
+        barcode: form.barcode.value || null,
+        purchase_price: form.purchase_price.value,
         sale_price: form.sale_price.value,
         stock: form.stock.value,
         low_stock_threshold: form.low_stock_threshold.value,
@@ -169,9 +176,9 @@ async function loadExpenses() {
             <tr>
                 <td>${ex.label}</td>
                 <td><strong>${fmt(ex.amount)}</strong></td>
-                <td style="color:var(--muted)">${new Date(ex.created_at).toLocaleDateString('fr-FR')}</td>
+                <td class="muted-text">${new Date(ex.created_at).toLocaleDateString('fr-FR')}</td>
             </tr>
-        `).join('') || '<tr><td colspan="3" style="color:var(--muted)">Aucune dépense ce mois.</td></tr>';
+        `).join('') || '<tr><td colspan="3" class="empty-state">Aucune dépense ce mois.</td></tr>';
     } catch { toast('Erreur chargement dépenses', 'error'); }
 }
 

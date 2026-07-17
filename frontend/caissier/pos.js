@@ -2,9 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "REMPLACER_PAR_VARIABLE_ENV",
+    apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
     authDomain: "stockledger-7b8ec.firebaseapp.com",
     projectId: "stockledger-7b8ec",
+    storageBucket: "stockledger-7b8ec.firebasestorage.app",
+    messagingSenderId: "574456739117",
+    appId: "1:574456739117:web:8180ed355451d9a9534fa4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -62,7 +65,7 @@ async function loadProducts() {
 
 function renderProducts(list) {
     const grid = document.getElementById('product-grid');
-    if (!list.length) { grid.innerHTML = '<p style="color:var(--muted)">Aucun produit trouvé.</p>'; return; }
+    if (!list.length) { grid.innerHTML = '<p class="empty-state">Aucun produit trouvé.</p>'; return; }
     grid.innerHTML = list.map(p => `
         <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}" data-id="${p.id}" onclick="addToCart(${p.id})">
             <div class="p-name">${p.name}</div>
@@ -136,7 +139,7 @@ function renderCart() {
     document.getElementById('validate-btn').disabled = cart.length === 0;
 
     if (!cart.length) {
-        container.innerHTML = '<p style="color:var(--muted);font-size:0.88rem;text-align:center;margin-top:2rem">Panier vide</p>';
+        container.innerHTML = '<p class="cart-empty">Panier vide</p>';
         return;
     }
 

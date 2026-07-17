@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard — StockLedger</title>
-    <link rel="icon" type="image/png" href="../stockeledeger.png">
+    <link rel="icon" type="image/png" href="../stockeledger.png">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+            <img src="../stockeledger.png" alt="Logo" class="sidebar-logo"> StockLedger
         </div>
         <nav>
             <a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
@@ -52,13 +52,13 @@
             </div>
 
             <!-- ALERTES STOCK -->
-            <div class="card" id="low-stock-section" style="margin-bottom:1.2rem">
+            <div class="card card-spaced" id="low-stock-section">
                 <div class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> Alertes de rupture de stock</div>
-                <div id="low-stock-list"><p style="color:var(--muted);font-size:0.88rem">Chargement…</p></div>
+                <div id="low-stock-list"><p class="empty-state">Chargement…</p></div>
             </div>
 
             <!-- AJOUTER PRODUIT -->
-            <div class="card" style="margin-bottom:1.2rem">
+            <div class="card card-spaced">
                 <div class="section-title"><i class="fa-solid fa-plus"></i> Ajouter un produit</div>
                 <form id="product-form">
                     <div class="form-row">
@@ -75,7 +75,7 @@
             </div>
 
             <!-- CATALOGUE -->
-            <div class="card" style="margin-bottom:1.2rem">
+            <div class="card card-spaced">
                 <div class="section-title"><i class="fa-solid fa-boxes-stacked"></i> Catalogue produits</div>
                 <table>
                     <thead>
@@ -93,7 +93,7 @@
             </div>
 
             <!-- AJOUTER DÉPENSE -->
-            <div class="card" style="margin-bottom:1.2rem">
+            <div class="card card-spaced">
                 <div class="section-title"><i class="fa-solid fa-money-bill-wave"></i> Enregistrer une dépense</div>
                 <form id="expense-form">
                     <div class="form-row">
@@ -127,6 +127,10 @@
             <input type="hidden" name="id">
             <div class="form-row">
                 <input type="text" name="name" placeholder="Nom" required>
+                <input type="text" name="barcode" placeholder="Code-barres">
+            </div>
+            <div class="form-row">
+                <input type="number" name="purchase_price" placeholder="Prix d'achat" required>
                 <input type="number" name="sale_price" placeholder="Prix de vente" required>
             </div>
             <div class="form-row">

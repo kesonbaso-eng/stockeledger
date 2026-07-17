@@ -71,9 +71,15 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
 ]
+CORS_ALLOW_CREDENTIALS = True
 
-FIREBASE_CREDENTIALS_PATH = os.getenv('FIREBASE_CREDENTIALS_PATH', 'firebase-credentials.json')
+FIREBASE_CREDENTIALS_PATH = os.getenv(
+    'FIREBASE_CREDENTIALS_PATH',
+    str(BASE_DIR / 'stockledger-7b8ec-firebase-adminsdk-fbsvc-0169e9dfba.json')
+)
 
 LANGUAGE_CODE = 'fr-fr'
 TIME_ZONE = 'Africa/Abidjan'

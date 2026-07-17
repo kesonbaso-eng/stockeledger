@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caisse — StockLedger</title>
-    <link rel="icon" type="image/png" href="../stockeledeger.png">
+    <link rel="icon" type="image/png" href="../stockeledger.png">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+            <img src="../stockeledger.png" alt="Logo" class="sidebar-logo"> StockLedger
         </div>
         <nav>
             <a href="pos.html" class="active"><i class="fa-solid fa-cash-register"></i> Caisse</a>
@@ -38,7 +38,7 @@
                         <input type="text" id="search" placeholder="Rechercher un produit ou scanner un code-barres…" autofocus>
                     </div>
                     <div class="product-grid" id="product-grid">
-                        <p style="color:var(--muted)">Chargement du catalogue…</p>
+                        <p class="empty-state">Chargement du catalogue…</p>
                     </div>
                 </div>
 

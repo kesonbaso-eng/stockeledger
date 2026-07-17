@@ -2,9 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "REMPLACER_PAR_VARIABLE_ENV",
+    apiKey: "AIzaSyCV2UxUHcimdStfui6aRxSOInJJhLBYgK4",
     authDomain: "stockledger-7b8ec.firebaseapp.com",
     projectId: "stockledger-7b8ec",
+    storageBucket: "stockledger-7b8ec.firebasestorage.app",
+    messagingSenderId: "574456739117",
+    appId: "1:574456739117:web:8180ed355451d9a9534fa4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -54,7 +57,7 @@ function renderProducts(list) {
     document.getElementById('product-count').textContent = list.length;
     const tbody = document.getElementById('products-table');
     if (!list.length) {
-        tbody.innerHTML = '<tr><td colspan="8" style="color:var(--muted)">Aucun produit.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Aucun produit.</td></tr>';
         return;
     }
     tbody.innerHTML = list.map(p => {
@@ -64,10 +67,10 @@ function renderProducts(list) {
         return `
         <tr>
             <td><strong>${p.name}</strong></td>
-            <td style="color:var(--muted);font-size:0.82rem">${p.barcode || '—'}</td>
+            <td class="muted-text small-text">${p.barcode || '—'}</td>
             <td>${fmt(p.purchase_price)}</td>
             <td>${fmt(p.sale_price)}</td>
-            <td style="color:${margin >= 0 ? 'var(--green)' : 'var(--red)'};font-weight:600">${margin}%</td>
+            <td class="margin-cell ${margin >= 0 ? 'positive' : 'negative'}">${margin}%</td>
             <td>${p.stock}</td>
             <td>
                 ${p.stock === 0
@@ -77,11 +80,9 @@ function renderProducts(list) {
                         : '<span class="badge green">OK</span>'
                 }
             </td>
-            <td style="display:flex;gap:0.4rem">
-                <button class="btn-add" style="padding:0.3rem 0.7rem;font-size:0.8rem"
-                    onclick='openEdit(${JSON.stringify(p).replace(/'/g, "&#39;")})'>✏️</button>
-                <button style="padding:0.3rem 0.7rem;font-size:0.8rem;background:var(--red);color:#fff;border:none;border-radius:6px;cursor:pointer"
-                    onclick="deleteProduct(${p.id})">🗑️</button>
+            <td class="actions-cell">
+                <button class="btn-icon btn-edit" onclick='openEdit(${JSON.stringify(p).replace(/'/g, "&#39;")})'>Editer</button>
+                <button class="btn-icon btn-delete" onclick="deleteProduct(${p.id})">Supprimer</button>
             </td>
         </tr>`;
     }).join('');

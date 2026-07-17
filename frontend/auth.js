@@ -55,9 +55,18 @@ async function sendTokenToBackend(user) {
     return res.json();
 }
 
+function redirectToWelcome() {
+    window.location.replace(new URL('./welcome.html', window.location.href).toString());
+}
+
 async function handlePostLogin(user) {
-    await sendTokenToBackend(user); // enregistre l'utilisateur côté backend
-    window.location.href = 'welcome.html'; // toujours passer par la page de bienvenue
+    try {
+        await sendTokenToBackend(user);
+    } catch (err) {
+        console.warn('Synchronisation backend impossible :', err);
+    } finally {
+        redirectToWelcome();
+    }
 }
 
 // ── RÉSULTAT REDIRECTION GOOGLE ──

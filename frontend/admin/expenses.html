@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dépenses — StockLedger</title>
-    <link rel="icon" type="image/png" href="../stockeledeger.png">
+    <link rel="icon" type="image/png" href="../stockeledger.png">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+            <img src="../stockeledger.png" alt="Logo" class="sidebar-logo"> StockLedger
         </div>
         <nav>
             <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
@@ -32,7 +32,7 @@
         </div>
         <div class="content">
 
-            <div class="stat-grid" style="margin-bottom:1.2rem">
+            <div class="stat-grid card-spaced">
                 <div class="stat-card">
                     <div class="label">Total ce mois</div>
                     <div class="value red" id="total-expenses">—</div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-bottom:1.2rem">
+            <div class="card card-spaced">
                 <div class="section-title"><i class="fa-solid fa-plus"></i> Enregistrer une dépense</div>
                 <form id="expense-form">
                     <div class="form-row">
@@ -61,7 +61,7 @@
                         <tr><th>Libellé</th><th>Montant</th><th>Date</th></tr>
                     </thead>
                     <tbody id="expenses-table">
-                        <tr><td colspan="3" style="color:var(--muted)">Chargement…</td></tr>
+                        <tr><td colspan="3" class="empty-state">Chargement…</td></tr>
                     </tbody>
                 </table>
             </div>

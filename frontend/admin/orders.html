@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commandes — StockLedger</title>
-    <link rel="icon" type="image/png" href="../stockeledeger.png">
+    <link rel="icon" type="image/png" href="../stockeledger.png">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <img src="../stockeledeger.png" alt="Logo" class="sidebar-logo"> StockLedger
+            <img src="../stockeledger.png" alt="Logo" class="sidebar-logo"> StockLedger
         </div>
         <nav>
             <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
@@ -28,7 +28,7 @@
     <div class="main">
         <div class="topbar">
             <h2>Commandes</h2>
-            <div style="display:flex;align-items:center;gap:1rem">
+            <div class="orders-toolbar">
                 <span class="user-info" id="user-info"></span>
                 <button class="btn-add" onclick="exportCSV()">
                     <i class="fa-solid fa-download"></i> Export CSV
@@ -37,7 +37,7 @@
         </div>
         <div class="content">
 
-            <div class="stat-grid" style="margin-bottom:1.2rem">
+            <div class="stat-grid card-spaced">
                 <div class="stat-card">
                     <div class="label">Total commandes</div>
                     <div class="value blue" id="stat-count">—</div>
@@ -66,7 +66,7 @@
                         </tr>
                     </thead>
                     <tbody id="orders-table">
-                        <tr><td colspan="7" style="color:var(--muted)">Chargement…</td></tr>
+                        <tr><td colspan="7" class="empty-state">Chargement…</td></tr>
                     </tbody>
                 </table>
             </div>

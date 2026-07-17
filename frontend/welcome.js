@@ -13,8 +13,11 @@ const BACKEND = 'http://127.0.0.1:8000';
 let destination = '';
 let authResolved = false;
 let loginRedirectTimer = null;
+const shouldWaitForAuth = sessionStorage.getItem('stockledger:auth-redirect') === '1' || localStorage.getItem('stockledger:auth-redirect') === '1';
 
 function redirectToLogin() {
+    sessionStorage.removeItem('stockledger:auth-redirect');
+    localStorage.removeItem('stockledger:auth-redirect');
     window.location.replace(new URL('./login.html', window.location.href).toString());
 }
 
@@ -29,6 +32,15 @@ onAuthStateChanged(auth, async (user) => {
     if (!user) {
         if (!authResolved) {
             clearLoginRedirectTimer();
+            if (shouldWaitForAuth) {
+                loginRedirectTimer = setTimeout(() => {
+                    if (!auth.currentUser) {
+                        document.getElementById('welcome-msg').textContent = 'Connexion en cours… Si cette page ne se met pas à jour, veuillez revenir à la connexion.';
+                        document.getElementById('redirect-msg').textContent = 'Patientez quelques secondes.';
+                    }
+                }, 4000);
+                return;
+            }
             loginRedirectTimer = setTimeout(() => {
                 if (!auth.currentUser) redirectToLogin();
             }, 2500);
@@ -40,6 +52,8 @@ onAuthStateChanged(auth, async (user) => {
 
     authResolved = true;
     clearLoginRedirectTimer();
+    sessionStorage.removeItem('stockledger:auth-redirect');
+    localStorage.removeItem('stockledger:auth-redirect');
 
     const name = user.displayName || user.email.split('@')[0];
     document.getElementById('welcome-name').textContent = name;

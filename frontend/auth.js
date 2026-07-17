@@ -5,7 +5,9 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithRedirect,
-    getRedirectResult
+    getRedirectResult,
+    browserLocalPersistence,
+    setPersistence
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -22,6 +24,16 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const BACKEND = 'http://127.0.0.1:8000';
+
+async function initAuthPersistence() {
+    try {
+        await setPersistence(auth, browserLocalPersistence);
+    } catch (err) {
+        console.warn('Persistence Firebase indisponible :', err);
+    }
+}
+
+initAuthPersistence();
 
 // ── UTILS ── (définis en premier, avant tout appel)
 
@@ -55,7 +67,13 @@ async function sendTokenToBackend(user) {
     return res.json();
 }
 
+function rememberAuthRedirect() {
+    sessionStorage.setItem('stockledger:auth-redirect', '1');
+    localStorage.setItem('stockledger:auth-redirect', '1');
+}
+
 function redirectToWelcome() {
+    rememberAuthRedirect();
     window.location.replace(new URL('./welcome.html', window.location.href).toString());
 }
 
